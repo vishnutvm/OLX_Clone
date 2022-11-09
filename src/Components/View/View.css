@@ -1,3 +1,9 @@
+
+img{
+  background-size: cover;
+  width: 100%;
+}
+
 .viewParentDiv {
   padding-top: 4em;
   display: flex;

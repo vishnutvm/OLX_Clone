@@ -9,9 +9,16 @@ const Create = () => {
   const [name, setName] = useState('');
   const [category, setCategory] = useState('');
   const [price, setPrice] = useState('')
+  const [description, setDescription] = useState('')
   const [Image,setImage] = useState(null)
   const date = new Date()
   const history = useHistory()
+
+  const handleCategory = (event)=>{
+    setCategory(event.target.value);
+  }
+  
+
   const handleSubmit =()=>{
 firebase.storage().ref(`/image/${Image.name}`).put(Image).then(({ref})=>{
   ref.getDownloadURL().then((url)=>{
@@ -27,6 +34,9 @@ firebase.storage().ref(`/image/${Image.name}`).put(Image).then(({ref})=>{
   history.push('/')
   })
 })
+
+
+
   }
 
   return (
@@ -48,14 +58,19 @@ firebase.storage().ref(`/image/${Image.name}`).put(Image).then(({ref})=>{
             <br />
             <label htmlFor="fname">Category</label>
             <br />
-            <input
-              className="input"
-              type="text"
-              id="fname"
-              name="category"
-              value = {category}
-              onChange={(e) => setCategory(e.target.value)}
-            />
+            <select id="lang"  onChange={handleCategory}>
+                  <option   value="select" >Select</option>
+                  <option   value="Cars" >Cars</option>
+                  <option   value="Motorcycles" >Motorcycles</option>
+                  <option   value="Mobiles" >Mobiles</option>
+                  <option   value="HouseForsale" >HouseForsale</option>
+                  <option   value="Scooter" >Scooter</option>
+                  <option   value="CommercialVehicles" >CommercialVehicles</option>
+                  <option   value="Laptops" >Laptops</option>
+                  <option   value="PC Peripharls" >PC Periphaarls</option>
+                  <option   value="Hardware" >Hardware</option>
+               </select>
+              
             <br />
             <label htmlFor="fname">Price</label>
             <br />
@@ -64,7 +79,12 @@ firebase.storage().ref(`/image/${Image.name}`).put(Image).then(({ref})=>{
                 onChange={(e) => setPrice(e.target.value)}
                 />
             <br />
-         
+            <label className="label" htmlFor="fname">Description</label>
+            <br />
+            <input className="input" type="text" id="fname"   defaultValue={description}    onChange={(e)=>{ setDescription(e.target.value) }} name="Description" />
+            <br />
+
+
           <br />
 
           {

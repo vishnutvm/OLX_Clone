@@ -162,3 +162,7 @@
     display: none;
   }
 }
+
+.headerParentDiv span{
+  cursor: pointer;
+}
