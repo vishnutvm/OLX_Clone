@@ -1,12 +1,16 @@
-import React from 'react';
-
+import React,{useContext} from 'react';
+import {useHistory} from 'react-router-dom'
 import './Header.css';
 import OlxLogo from '../../assets/OlxLogo';
 import Search from '../../assets/Search';
 import Arrow from '../../assets/Arrow';
 import SellButton from '../../assets/SellButton';
 import SellButtonPlus from '../../assets/SellButtonPlus';
+import { AuthContext, FirebaseContext } from '../../store/FirebaseContext';
 function Header() {
+  const History = useHistory()
+  const {user} = useContext(AuthContext)
+  const {firebase} =useContext(FirebaseContext)
   return (
     <div className="headerParentDiv">
       <div className="headerChildDiv">
@@ -34,10 +38,20 @@ function Header() {
           <Arrow></Arrow>
         </div>
         <div className="loginPage">
-          <span>Login</span>
+         
+{/* if the user exist the username will show else the login button with redirecting to login page */}
+{
+  user? <span>{`Welcome ${user.displayName}`}</span> :  <span onClick={()=>{
+    History.push('/login')
+  }}>Login</span>
+}
+        
           <hr />
         </div>
-
+       { user && <span onClick={()=>{
+        firebase.auth().signOut();
+         History.push('/login')
+       }} >Logout</span> } 
         <div className="sellMenu">
           <SellButton></SellButton>
           <div className="sellMenuContent">
