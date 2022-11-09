@@ -14,7 +14,9 @@ function Header() {
   return (
     <div className="headerParentDiv">
       <div className="headerChildDiv">
-        <div className="brandName">
+        <div className="brandName" onClick={()=>{
+          History.push('/')
+        }}>
           <OlxLogo></OlxLogo>
         </div>
         <div className="placeSearch">
@@ -34,8 +36,13 @@ function Header() {
           </div>
         </div>
         <div className="language">
-          <span> ENGLISH </span>
-          <Arrow></Arrow>
+        <select id="lang" className='select'  >
+                  <option   value="select" >ENGLISH</option>
+                  <option   value="Cars" >HINDI</option>
+                  
+               </select> 
+               
+          
         </div>
         <div className="loginPage">
          

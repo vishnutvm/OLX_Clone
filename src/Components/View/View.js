@@ -41,7 +41,7 @@ function View() {
 
         {userDetails && (
           <div className="contactDetails">
-            <p>Sold By</p>
+            <p>Posted By</p>
             <p>Name : {userDetails.username}</p>
             <p> Phone No: {userDetails.phone}</p>
 

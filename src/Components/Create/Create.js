@@ -79,13 +79,10 @@ firebase.storage().ref(`/image/${Image.name}`).put(Image).then(({ref})=>{
                 onChange={(e) => setPrice(e.target.value)}
                 />
             <br />
-            <label className="label" htmlFor="fname">Description</label>
-            <br />
-            <input className="input" type="text" id="fname"   defaultValue={description}    onChange={(e)=>{ setDescription(e.target.value) }} name="Description" />
-            <br />
+        
+     
 
 
-          <br />
 
           {
             Image ?  <img  alt="Posts" width="200px" height="200px" 

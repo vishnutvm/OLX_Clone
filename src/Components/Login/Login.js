@@ -49,7 +49,10 @@ function Login() {
           <br />
           <button>Login</button>
         </form>
-        <a>Signup</a>
+        <a href='/signup' onClick={(e)=>{
+          e.preventDefault()
+          history.push('/signup')
+        }} >Signup</a>
       </div>
     </div>
   );

@@ -5,7 +5,7 @@ import Signup from './Pages/Signup'
 import Login from './Pages/Login'
 import { AuthContext, FirebaseContext } from './store/FirebaseContext';
 import Post from './store/PostContext'
-
+import CategoryView from './Pages/CategoryView'
 /**
  * ?  =====Import Components=====
  */
@@ -45,8 +45,9 @@ firebase.auth().onAuthStateChanged((user)=>{
         <Route path='/viewpost'>
      <ViewPost/>
         </Route>
-
-
+        <Route  path="/categoryposts">
+<CategoryView/>
+</Route>
 
       </Routers>
       </Post>

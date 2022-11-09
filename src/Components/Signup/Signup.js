@@ -88,7 +88,10 @@ history.push('/login')
           <br />
           <button>Signup</button>
         </form>
-        <a href='no'>Login</a>
+        <a  href='/login' onClick={(e)=>{
+          e.preventDefault()
+         history.push('/login')
+        }}>Login</a>
       </div>
     </div>
   );

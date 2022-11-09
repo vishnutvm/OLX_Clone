@@ -9,6 +9,7 @@
 }
 
 .bannerParentDiv .bannerChildDiv .menuBar span {
+  cursor: pointer;
 }
 
 .bannerParentDiv .bannerChildDiv .menuBar .categoryMenu span {

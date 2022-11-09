@@ -161,8 +161,25 @@
   .sellMenu {
     display: none;
   }
+  .language{
+    display: none;
+  }
 }
 
 .headerParentDiv span{
   cursor: pointer;
+}
+.select {
+  border: none;
+  cursor: pointer;
+  background-color: whitesmoke;
+}
+
+
+input:focus,
+select:focus, .form-control:focus,
+textarea:focus,
+button:focus {
+  outline: none !important;
+  box-shadow: none !important;
 }
