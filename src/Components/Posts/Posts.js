@@ -1,9 +1,29 @@
-import React from 'react';
+import React ,{useEffect,useContext,useState} from 'react';
 
 import Heart from '../../assets/Heart';
+import { FirebaseContext } from '../../store/FirebaseContext';
+import { PostContext } from '../../store/PostContext';
 import './Post.css';
-
+import {useHistory} from 'react-router-dom'
 function Posts() {
+  const {setPostDetails} = useContext(PostContext)
+const {firebase} = useContext(FirebaseContext)
+const [products, setproducts] = useState([])
+const history = useHistory()
+useEffect(()=>{
+
+firebase.firestore().collection('products').get().then((snapshot)=>{
+  console.log(snapshot)
+  const allPost = snapshot.docs.map((product)=>{
+    return{
+      ...product.data(),
+      id:product.id
+    }
+  })
+setproducts(allPost)
+})
+},[])
+
 
   return (
     <div className="postParentDiv">
@@ -38,22 +58,44 @@ function Posts() {
           <span>Fresh recommendations</span>
         </div>
         <div className="cards">
-          <div className="card">
+
+
+
+{/* rendering dinamic cards for fresh recommendation section */}
+
+{
+products.map((product)=>{
+  return <div key={product.price} className="card"
+  onClick={()=>{
+    
+    setPostDetails(product)
+    history.push('/viewpost')
+  }}
+  
+  >
             <div className="favorite">
               <Heart></Heart>
             </div>
             <div className="image">
-              <img src="../../../Images/R15V3.jpg" alt="" />
+              <img src={product.url} alt="product" />
             </div>
             <div className="content">
-              <p className="rate">&#x20B9; 250000</p>
-              <span className="kilometer">Two Wheeler</span>
-              <p className="name"> YAMAHA R15V3</p>
+              <p className="rate">&#x20B9; {product.price}</p>
+              <span className="kilometer">{product.category}</span>
+              <p className="name"> {product.name}</p>
             </div>
             <div className="date">
-              <span>10/5/2021</span>
+              <span>{product.createdAt}</span>
             </div>
           </div>
+
+})
+   
+}
+         
+
+
+
         </div>
       </div>
     </div>

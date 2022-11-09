@@ -52,13 +52,23 @@ function Header() {
         firebase.auth().signOut();
          History.push('/login')
        }} >Logout</span> } 
-        <div className="sellMenu">
+
+
+
+        <div onClick={()=>{
+
+user && History.push('/create');
+
+        }} className="sellMenu">
           <SellButton></SellButton>
           <div className="sellMenuContent">
             <SellButtonPlus></SellButtonPlus>
             <span>SELL</span>
           </div>
         </div>
+
+
+
       </div>
     </div>
   );

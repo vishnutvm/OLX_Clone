@@ -4,12 +4,14 @@ import {BrowserRouter as Routers , Route} from 'react-router-dom'
 import Signup from './Pages/Signup'
 import Login from './Pages/Login'
 import { AuthContext, FirebaseContext } from './store/FirebaseContext';
+import Post from './store/PostContext'
 
 /**
  * ?  =====Import Components=====
  */
 import Home from './Pages/Home';
 import Create from './Pages/Create'
+import ViewPost from './Pages/ViewPost'
 
 
 function App() {
@@ -25,7 +27,8 @@ firebase.auth().onAuthStateChanged((user)=>{
 
   return (
     <div>
-      <Routers>
+      <Post>
+          <Routers>
         <Route exact path='/'>
        <Home /> 
         </Route>
@@ -39,10 +42,15 @@ firebase.auth().onAuthStateChanged((user)=>{
         <Route path='/create'>
      <Create/>
         </Route>
+        <Route path='/viewpost'>
+     <ViewPost/>
+        </Route>
 
 
 
       </Routers>
+      </Post>
+    
       
     </div>
   );
